@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — OpenText Cybersecurity (Draft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand-primary:#1A6AFF;
+    --brand-text:#101C2F;
+    --brand-text-subtle:#5B6B84;
+    --brand-bg:#FFFFFF;
+    --brand-page-bg:#F5F7FA;
+    --brand-hero-bg:#101C2F;
+    --brand-gold:#E1BC36;
+    --font-heading:'Inter',sans-serif;
+    --font-body:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    background:var(--brand-page-bg);
+    color:var(--brand-text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brand-primary);color:#fff;}
+
+  a{color:var(--brand-primary);text-decoration:none;border-bottom:1px solid rgba(26,106,255,0.3);transition:border-color .2s ease, color .2s ease;}
+  a:hover{border-color:var(--brand-primary);}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(16,28,47,0.08);
+  }
+  .nav-inner{max-width:1080px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .nav-logo{font-weight:800;font-size:15px;letter-spacing:0.02em;color:var(--brand-text);display:flex;align-items:center;gap:8px;}
+  .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--brand-primary);}
+  .nav-links{display:flex;gap:28px;font-size:14px;font-weight:500;}
+  .nav-links a{border-bottom:none;color:var(--brand-text-subtle);}
+  .nav-links a:hover{color:var(--brand-primary);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--brand-hero-bg);
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    padding:120px 0 140px;
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-200px;right:-200px;
+    width:600px;height:600px;
+    background:radial-gradient(circle, rgba(26,106,255,0.35), transparent 70%);
+    filter:blur(20px);
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    bottom:-260px;left:-160px;
+    width:500px;height:500px;
+    background:radial-gradient(circle, rgba(225,188,54,0.12), transparent 70%);
+  }
+  .hero-inner{position:relative;z-index:2;max-width:760px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    color:#8FB7FF;
+    margin-bottom:24px;
+    opacity:0;animation:fadeUp .7s ease forwards;animation-delay:.05s;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:#8FB7FF;}
+  h1{
+    font-family:var(--font-heading);
+    font-size:clamp(38px,5.5vw,64px);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    margin-bottom:22px;
+    opacity:0;animation:fadeUp .7s ease forwards;animation-delay:.15s;
+  }
+  h1 .accent{color:#5B93FF;}
+  .hero-lede{
+    font-size:19px;
+    color:rgba(255,255,255,0.78);
+    max-width:600px;
+    margin-bottom:40px;
+    opacity:0;animation:fadeUp .7s ease forwards;animation-delay:.25s;
+  }
+  .hero-cta{
+    display:inline-flex;gap:14px;
+    opacity:0;animation:fadeUp .7s ease forwards;animation-delay:.35s;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:999px;
+    font-weight:600;font-size:15px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    border-bottom:none;
+  }
+  .btn-primary{background:var(--brand-primary);color:#fff;box-shadow:0 8px 24px rgba(26,106,255,0.35);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(26,106,255,0.45);}
+  .btn-ghost{color:#fff;border:1px solid rgba(255,255,255,0.25);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.6);}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+  /* ---------- Sections ---------- */
+  section{padding:96px 0;}
+  section.tight{padding:64px 0;}
+  .section-alt{background:var(--brand-bg);}
+
+  .kicker{
+    font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--brand-primary);margin-bottom:14px;
+  }
+  h2{
+    font-family:var(--font-heading);
+    font-size:clamp(28px,3.4vw,40px);
+    font-weight:800;letter-spacing:-0.01em;
+    margin-bottom:20px;
+    color:var(--brand-text);
+  }
+  p.lede{font-size:18px;color:var(--brand-text-subtle);max-width:680px;}
+  .body-copy{font-size:16.5px;color:var(--brand-text-subtle);max-width:720px;}
+  .body-copy strong{color:var(--brand-text);}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* What we do */
+  .whatwedo-card{
+    background:linear-gradient(135deg, rgba(26,106,255,0.06), rgba(26,106,255,0.02));
+    border:1px solid rgba(26,106,255,0.15);
+    border-radius:20px;
+    padding:40px;
+    margin-top:8px;
+  }
+  .whatwedo-card p{font-size:21px;font-weight:600;color:var(--brand-text);line-height:1.45;}
+  .whatwedo-card p .hl{color:var(--brand-primary);}
+
+  /* Stats */
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:rgba(16,28,47,0.08);
+    border-radius:16px;overflow:hidden;
+    margin-top:32px;
+  }
+  .stat{background:#fff;padding:32px 20px;text-align:center;}
+  .stat-value{font-family:var(--font-heading);font-size:clamp(26px,3vw,38px);font-weight:800;color:var(--brand-primary);}
+  .stat-label{font-size:13px;color:var(--brand-text-subtle);margin-top:6px;letter-spacing:0.01em;}
+  .stats-note{font-size:13px;color:var(--brand-text-subtle);margin-top:16px;font-style:italic;}
+
+  /* Logo cloud */
+  .logo-row{
+    display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;
+  }
+  .logo-chip{
+    padding:10px 20px;border:1px dashed rgba(16,28,47,0.2);border-radius:10px;
+    font-size:13px;color:var(--brand-text-subtle);font-weight:500;
+    background:rgba(16,28,47,0.02);
+  }
+  .testimonial{
+    margin-top:36px;padding:30px 36px;
+    border-left:3px solid var(--brand-gold);
+    background:rgba(225,188,54,0.06);
+    border-radius:0 12px 12px 0;
+  }
+  .testimonial p{font-size:18px;font-style:italic;color:var(--brand-text);}
+  .testimonial cite{display:block;margin-top:14px;font-size:13px;font-style:normal;color:var(--brand-text-subtle);}
+
+  /* Timeline */
+  .timeline{
+    position:relative;
+    margin-top:48px;
+    padding-left:32px;
+    border-left:2px solid rgba(26,106,255,0.15);
+  }
+  .tl-item{position:relative;padding-bottom:36px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:'';position:absolute;left:-38px;top:4px;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--brand-primary);
+    box-shadow:0 0 0 4px rgba(26,106,255,0.15);
+  }
+  .tl-year{font-size:13px;font-weight:700;color:var(--brand-primary);letter-spacing:0.05em;}
+  .tl-label{font-size:16px;color:var(--brand-text);margin-top:4px;font-weight:500;}
+  .timeline-link{margin-top:32px;font-size:15px;}
+
+  /* Legacy brand cards */
+  .legacy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;}
+  .legacy-card{
+    background:#fff;border:1px solid rgba(16,28,47,0.08);border-radius:16px;
+    padding:28px;transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .legacy-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(16,28,47,0.08);}
+  .legacy-name{font-family:var(--font-heading);font-size:19px;font-weight:800;margin-bottom:10px;color:var(--brand-text);}
+  .legacy-name .badge{
+    display:inline-block;margin-left:8px;font-size:10px;font-weight:700;letter-spacing:0.05em;
+    text-transform:uppercase;color:var(--brand-primary);background:rgba(26,106,255,0.08);
+    padding:3px 8px;border-radius:999px;vertical-align:middle;
+  }
+  .legacy-card p{font-size:14.5px;color:var(--brand-text-subtle);margin-bottom:14px;}
+  .legacy-card a{font-size:14px;font-weight:600;}
+  .legacy-note{
+    margin-top:28px;padding:20px 24px;background:rgba(26,106,255,0.05);
+    border-radius:12px;font-size:14.5px;color:var(--brand-text-subtle);
+  }
+
+  /* Part of OpenText */
+  .parent-section{
+    background:var(--brand-hero-bg);color:#fff;border-radius:24px;
+    padding:64px 56px;position:relative;overflow:hidden;
+  }
+  .parent-section::before{
+    content:'';position:absolute;top:-100px;right:-100px;width:340px;height:340px;
+    background:radial-gradient(circle, rgba(26,106,255,0.3), transparent 70%);
+  }
+  .parent-section h2{color:#fff;}
+  .parent-section p{color:rgba(255,255,255,0.75);font-size:17px;max-width:640px;position:relative;z-index:1;}
+  .parent-tagline{
+    margin-top:24px;font-size:19px;font-weight:600;color:#fff;position:relative;z-index:1;
+  }
+  .parent-tagline .accent{color:#5B93FF;}
+
+  /* Principles */
+  .principles-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px;}
+  .principle{border-top:3px solid var(--brand-primary);padding-top:18px;}
+  .principle-num{font-size:12px;font-weight:700;color:var(--brand-primary);letter-spacing:0.05em;}
+  .principle h4{font-size:16px;font-weight:700;margin:8px 0 8px;color:var(--brand-text);}
+  .principle p{font-size:14px;color:var(--brand-text-subtle);}
+
+  /* CTA */
+  .cta-band{
+    background:linear-gradient(120deg, rgba(26,106,255,0.08), rgba(26,106,255,0.02));
+    border:1px solid rgba(26,106,255,0.15);
+    border-radius:20px;padding:48px;text-align:center;margin-top:8px;
+  }
+  .cta-band h3{font-family:var(--font-heading);font-size:26px;font-weight:800;margin-bottom:10px;}
+  .cta-band p{color:var(--brand-text-subtle);margin-bottom:24px;}
+  .cta-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+  .team-links{display:flex;gap:20px;margin-top:20px;}
+
+  /* Footer */
+  footer{background:var(--brand-hero-bg);color:rgba(255,255,255,0.5);padding:40px 0;text-align:center;font-size:13px;}
+
+  /* Notes panel */
+  .notes-section{background:#0D1626;padding:80px 0;}
+  .notes-header{color:#fff;margin-bottom:8px;}
+  .notes-header .kicker{color:var(--brand-gold);}
+  .notes-header h2{color:#fff;}
+  .notes-lede{color:rgba(255,255,255,0.55);max-width:640px;margin-bottom:44px;}
+  .note-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .note-card{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;padding:28px;
+  }
+  .note-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:28px;height:28px;border-radius:50%;background:var(--brand-gold);color:#101C2F;
+    font-size:13px;font-weight:800;margin-bottom:14px;
+  }
+  .note-card h4{color:#fff;font-size:16px;font-weight:700;margin-bottom:10px;}
+  .note-card p{color:rgba(255,255,255,0.6);font-size:14px;line-height:1.65;}
+  .note-card .options{margin-top:10px;padding-left:18px;}
+  .note-card .options li{color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:6px;}
+  .note-card a{color:#5B93FF;border-bottom-color:rgba(91,147,255,0.4);}
+
+  @media(max-width:860px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .legacy-grid{grid-template-columns:1fr;}
+    .principles-grid{grid-template-columns:repeat(2,1fr);}
+    .note-grid{grid-template-columns:1fr;}
+    .parent-section{padding:44px 28px;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="dot"></span> OpenText Cybersecurity</div>
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#legacy">Legacy Brands</a>
+      <a href="#openext">Part of OpenText</a>
+      <a href="#products">Products</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">About Us</div>
+    <h1>Cybersecurity, <span class="accent">without the complexity.</span></h1>
+    <p class="hero-lede">We protect emails, endpoints, and data for growing businesses and the MSPs who support them — no bloated suites, no unnecessary jargon.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#products">See our products</a>
+      <a class="btn btn-ghost" href="#story">Our story ↓</a>
+    </div>
+  </div>
+</header>
+
+<section id="story" class="section-alt">
+  <div class="wrap">
+    <div class="kicker reveal">What We Do</div>
+    <h2 class="reveal">One sentence version</h2>
+    <div class="whatwedo-card reveal">
+      <p>We protect emails, endpoints, and data for growing businesses and the MSPs who support them — <span class="hl">without the complexity</span> of enterprise-grade security tools.</p>
+    </div>
+    <p class="body-copy reveal" style="margin-top:24px;">If you've ever lost sleep over a phishing email that almost got through, a ransomware alert at 2am, or whether last night's backup actually ran — that's exactly what we solve. <strong>150,000+ customers</strong> and <strong>15,000+ partners</strong> already trust us to keep their data safe, their inboxes clean, and their business running when things go wrong.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <div class="kicker reveal">By the Numbers</div>
+    <div class="stats-grid reveal">
+      <div class="stat"><div class="stat-value">150K+</div><div class="stat-label">Customers</div></div>
+      <div class="stat"><div class="stat-value">15K+</div><div class="stat-label">Partners</div></div>
+      <div class="stat"><div class="stat-value">25+</div><div class="stat-label">Years in Cybersecurity</div></div>
+      <div class="stat"><div class="stat-value">97%</div><div class="stat-label">MS tickets resolved, no escalation</div></div>
+    </div>
+    <div class="stats-note reveal">Figures sourced from the current OpenText Cybersecurity homepage — pending confirmation, see notes below.</div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="kicker reveal">Trusted By Companies Like Yours</div>
+    <h2 class="reveal">Placeholder for partner &amp; customer logos</h2>
+    <div class="logo-row reveal">
+      <div class="logo-chip">CHT Security</div>
+      <div class="logo-chip">MAD Security</div>
+      <div class="logo-chip">Obrela Security Industries</div>
+      <div class="logo-chip">Proficio</div>
+      <div class="logo-chip">Webcor</div>
+      <div class="logo-chip">+ logo cloud pending Marketing</div>
+    </div>
+    <div class="testimonial reveal">
+      <p>"Placeholder for a short customer or MSP testimonial, with a link to the full case study."</p>
+      <cite>— Customer Name, Title, Company</cite>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="kicker reveal">How We Got Here</div>
+    <h2 class="reveal">A timeline of trusted brands</h2>
+    <p class="body-copy reveal">OpenText Cybersecurity wasn't built from scratch — it was built by bringing together some of the most respected names in security under one roof. Each acquisition added a critical layer of protection:</p>
+
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-year">2018</div><div class="tl-label">Erado joins Zix — compliance archiving &amp; eDiscovery</div></div>
+      <div class="tl-item"><div class="tl-year">2019</div><div class="tl-label">Webroot joins Carbonite — cloud-native endpoint protection &amp; threat intelligence</div></div>
+      <div class="tl-item"><div class="tl-year">2019</div><div class="tl-label">AppRiver joins Zix — MSP-first email security &amp; Microsoft 365 services</div></div>
+      <div class="tl-item"><div class="tl-year">2019</div><div class="tl-label">Carbonite (incl. Webroot) joins OpenText — SMB backup &amp; endpoint footprint</div></div>
+      <div class="tl-item"><div class="tl-year">2020</div><div class="tl-label">CloudAlly joins Zix — SaaS-to-SaaS backup for Microsoft 365, Google Workspace, Salesforce</div></div>
+      <div class="tl-item"><div class="tl-year">2021</div><div class="tl-label">Zix (incl. AppRiver, CloudAlly, Erado) joins OpenText — unifying email security, compliance &amp; backup</div></div>
+      <div class="tl-item"><div class="tl-year">2024</div><div class="tl-label">Pillr joins OpenText — 24/7 Managed Detection &amp; Response for MSPs</div></div>
+    </div>
+
+    <p class="timeline-link reveal">Want the full story? See our detailed <a href="https://cybersecurity.opentext.com/legacy/" target="_blank">Brand Acquisition Timeline &amp; Product Naming Guide →</a></p>
+  </div>
+</section>
+
+<section id="legacy" class="section-alt">
+  <div class="wrap">
+    <div class="kicker reveal">Meet Our Legacy Brands</div>
+    <h2 class="reveal">You may know us by a different name</h2>
+    <p class="body-copy reveal">That's by design — we brought together industry leaders instead of starting over.</p>
+
+    <div class="legacy-grid reveal">
+      <div class="legacy-card">
+        <div class="legacy-name">Zix <span class="badge">Fully Absorbed</span></div>
+        <p>For decades, Zix was the trusted name in email encryption and secure communication for the Microsoft ecosystem. Zix joined OpenText in 2021 — same team, same expertise, now powering our email security line.</p>
+        <a href="https://cybersecurity.opentext.com/legacy/zix/" target="_blank">Learn what changed →</a>
+      </div>
+      <div class="legacy-card">
+        <div class="legacy-name">Webroot <span class="badge">Business Side Only</span></div>
+        <p>A pioneer in cloud-based, AI-driven endpoint protection. Webroot's business &amp; MSP offerings now power our endpoint and DNS security products. Consumer products continue separately at webroot.com.</p>
+        <a href="https://cybersecurity.opentext.com/legacy/webroot/" target="_blank">Learn what changed →</a>
+      </div>
+      <div class="legacy-card">
+        <div class="legacy-name">AppRiver <span class="badge">Fully Absorbed</span></div>
+        <p>Known for cloud email security and deep Microsoft 365 expertise, AppRiver built one of the industry's strongest MSP distribution channels — now part of our MSP-first model.</p>
+        <a href="https://cybersecurity.opentext.com/legacy/appriver/" target="_blank">Learn what changed →</a>
+      </div>
+    </div>
+
+    <div class="legacy-note reveal">If you're a Zix, Webroot, or AppRiver customer: nothing changes about your account team, your support portal, or your pricing — you're just backed by a bigger, more capable portfolio today.</div>
+  </div>
+</section>
+
+<section id="openext">
+  <div class="wrap">
+    <div class="parent-section reveal">
+      <div class="kicker" style="color:#8FB7FF;">Part of OpenText</div>
+      <h2>The scale of a leader, the focus of a specialist</h2>
+      <p>OpenText Cybersecurity is a dedicated division of <a href="https://www.opentext.com/" target="_blank" style="color:#fff;border-color:rgba(255,255,255,0.4);">OpenText</a>, a global leader in information management. That parentage means we bring enterprise-grade R&amp;D, scale, and stability — while staying laser-focused on one job: helping businesses and MSPs defend against modern cyber threats.</p>
+      <div class="parent-tagline">OpenText powers how the world manages information. <span class="accent">OpenText Cybersecurity protects it.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="kicker reveal">How We Work</div>
+    <h2 class="reveal">Our principles</h2>
+    <div class="principles-grid reveal">
+      <div class="principle"><div class="principle-num">01</div><h4>Simplicity first</h4><p>Security tools that are easy to deploy and use, not another burden on your IT team.</p></div>
+      <div class="principle"><div class="principle-num">02</div><h4>Practical resilience</h4><p>Start with what you need, add coverage as you grow. Solutions work together or independently.</p></div>
+      <div class="principle"><div class="principle-num">03</div><h4>Real expertise, not jargon</h4><p>25+ years of hands-on experience, translated into plain business outcomes.</p></div>
+      <div class="principle"><div class="principle-num">04</div><h4>Confidence you can rely on</h4><p>Backed by the scale of OpenText, delivered with the responsiveness of a dedicated security team.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h3>See our products and solutions</h3>
+      <p>Explore endpoint security, email security, backup, and compliance solutions built for growing businesses and MSPs.</p>
+      <div class="cta-links">
+        <a class="btn btn-primary" style="color:#fff;" href="https://cybersecurity.opentext.com/products/endpoint-security/" target="_blank">Endpoint Security</a>
+        <a class="btn btn-primary" style="color:#fff;" href="https://cybersecurity.opentext.com/products/email-security/" target="_blank">Email Security</a>
+        <a class="btn btn-primary" style="color:#fff;" href="https://cybersecurity.opentext.com/products/data-backup-recovery/" target="_blank">Data Backup &amp; Recovery</a>
+        <a class="btn btn-primary" style="color:#fff;" href="https://cybersecurity.opentext.com/products/saas-backup/" target="_blank">SaaS Backup</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight section-alt">
+  <div class="wrap">
+    <div class="kicker reveal">Meet the Team</div>
+    <h2 class="reveal">The people behind the portfolio</h2>
+    <div class="team-links reveal">
+      <a href="#">Leadership Team →</a>
+      <a href="#">Explore Careers →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 OpenText Cybersecurity — Draft copy prepared for internal review by Verto Digital
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  reveals.forEach((el,i)=>{
+    el.style.transitionDelay = (i%4)*0.06 + 's';
+    obs.observe(el);
+  });
+</script>
+
+</body>
+</html>
